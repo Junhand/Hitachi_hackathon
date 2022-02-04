@@ -9,13 +9,20 @@ from sklearn.model_selection import train_test_split
 import pandas_profiling as pdp
 
 if __name__ == '__main__':
-    data = load_data()
-    print(data.shape,data.columns)
-    #profile = pdp.ProfileReport(data)
-    #profile.to_file("./Analysis_data/analysis.html")
+    df_energy, df_weather = load_data()
+    print(df_energy.shape, df_weather.shape)
+    print(df_energy.columns, df_weather.columns)
+
+    #df_energy2, df_weather2 = preprocessing(df_energy, df_weather)
+    
+    profile = pdp.ProfileReport(df_energy)
+    profile.to_file("./Analysis_data/analysis_energy1.html")
+    profile = pdp.ProfileReport(df_weather)
+    profile.to_file("./Analysis_data/analysis_weather1.html")
+    '''
     #data_info(data)
     visualize(data)
-    fixed_data = preprocessing(data)
+    
 
     data_x, data_y = split_data(fixed_data)
     X_train, X_test, Y_train, Y_test = train_test_split(data_x, data_y, test_size=0.2,random_state=42)
@@ -32,3 +39,4 @@ if __name__ == '__main__':
         
 
     #print(data.head(10))
+    '''

@@ -1,7 +1,7 @@
 import pandas as pd
 
 def load_data():
-    excel_data = pd.read_excel("./Data/boston_housing.xlsx")
-    csv_data = pd.read_csv("./Data/train.csv")
-    return csv_data
+    df_ABC = pd.read_csv("./Data/ABC_forUser.csv")
+    df_D = pd.read_csv("./Data/D_forUser.csv")
+    return df_ABC, df_D
 
