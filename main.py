@@ -17,18 +17,22 @@ if __name__ == '__main__':
 
     df_energys, df_weathers = preprocessing(df_energy, df_weather)
     
-    #profile = pdp.ProfileReport(df_energy)
-    #profile.to_file("./Analysis_data/analysis_energy1.html")
-    #profile = pdp.ProfileReport(df_weather)
-    #profile.to_file("./Analysis_data/analysis_weather1.html")
+    profile = pdp.ProfileReport(df_energy)
+    profile.to_file("./Analysis_data/analysis_energy1.html")
+    profile = pdp.ProfileReport(df_weather)
+    profile.to_file("./Analysis_data/analysis_weather1.html")
 
     for i in range(len(df_energys)):
         name = "energy"+str(i+2015)
-        hist(df_energys[i], name)
+        profile = pdp.ProfileReport(df_energys[i])
+        profile.to_file("./Analysis_data/analysis_energy{}.html".format(name))
+        #hist(df_energys[i], name)
     
     for i in range(len(df_weathers)):
         name = "weather"+str(i+2015)
-        hist(df_weathers[i], name)
+        profile = pdp.ProfileReport(df_weathers[i])
+        profile.to_file("./Analysis_data/analysis_weather{}.html".format(name))
+        #hist(df_weathers[i], name)
     '''
     #data_info(data)
     visualize(data)
