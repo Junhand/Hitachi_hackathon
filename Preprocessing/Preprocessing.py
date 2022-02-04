@@ -48,8 +48,29 @@ def split_data(df_energy, df_weather):
 
 
 def preprocessing(df_energy, df_weather):
-   df_energy[df_energy['name'].str.contains('li')]
-   df_weather
+   energy = []
+   df_2015 = df_energy[df_energy['utc_timestamp'].str.contains('2015')]
+   df_2016 = df_energy[df_energy['utc_timestamp'].str.contains('2016')]
+   df_2017 = df_energy[df_energy['utc_timestamp'].str.contains('2017')]
+   df_2018 = df_energy[df_energy['utc_timestamp'].str.contains('2018')]
+   df_2019 = df_energy[df_energy['utc_timestamp'].str.contains('2019')]
+   energy.append(df_2015)
+   energy.append(df_2016)
+   energy.append(df_2017)
+   energy.append(df_2018)
+   energy.append(df_2019)
+
+   weather = []
+   df1_2015 = df_weather[df_weather['utc_timestamp'].str.contains('2015')]
+   df1_2016 = df_weather[df_weather['utc_timestamp'].str.contains('2016')]
+   df1_2017 = df_weather[df_weather['utc_timestamp'].str.contains('2017')]
+   df1_2018 = df_weather[df_weather['utc_timestamp'].str.contains('2018')]
+   df1_2019 = df_weather[df_weather['utc_timestamp'].str.contains('2019')]
+   weather.append(df1_2015)
+   weather.append(df1_2016)
+   weather.append(df1_2017)
+   weather.append(df1_2018)
+   weather.append(df1_2019)
    #カラムの削除
    #drop_df = df.drop([],axis=1)
 
@@ -62,7 +83,7 @@ def preprocessing(df_energy, df_weather):
 
    #利用するdf
    #df = oneHot_df
-   return df
+   return energy, weather
   
 
 

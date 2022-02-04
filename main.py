@@ -3,7 +3,7 @@ from Preprocessing.Preprocessing import preprocessing, split_data
 from Train.Train import train
 from Train.Evaluation import evaluation
 from Analysis.StatisticAnalysis import data_info
-from Analysis.Visualize import visualize
+from Analysis.Visualize import visualize, hist
 from Analysis.PredictionAnalysis import scatter_vis
 from sklearn.model_selection import train_test_split
 import pandas_profiling as pdp
@@ -13,12 +13,22 @@ if __name__ == '__main__':
     print(df_energy.shape, df_weather.shape)
     print(df_energy.columns, df_weather.columns)
 
-    #df_energy2, df_weather2 = preprocessing(df_energy, df_weather)
+    #data_info(df_energy)
+
+    df_energys, df_weathers = preprocessing(df_energy, df_weather)
     
-    profile = pdp.ProfileReport(df_energy)
-    profile.to_file("./Analysis_data/analysis_energy1.html")
-    profile = pdp.ProfileReport(df_weather)
-    profile.to_file("./Analysis_data/analysis_weather1.html")
+    #profile = pdp.ProfileReport(df_energy)
+    #profile.to_file("./Analysis_data/analysis_energy1.html")
+    #profile = pdp.ProfileReport(df_weather)
+    #profile.to_file("./Analysis_data/analysis_weather1.html")
+
+    for i in range(len(df_energys)):
+        name = "energy"+str(i+2015)
+        hist(df_energys[i], name)
+    
+    for i in range(len(df_weathers)):
+        name = "weather"+str(i+2015)
+        hist(df_weathers[i], name)
     '''
     #data_info(data)
     visualize(data)

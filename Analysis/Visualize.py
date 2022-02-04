@@ -33,3 +33,9 @@ def visualize(df):
     sns.barplot(y=column, x="y", data=df)
     plt.savefig("./Visualize_data/{0}_bar.png".format(column))
     return
+
+def hist(df, name):
+    #ヒストグラムの確認
+    plt.figure(figsize=(12, 12))
+    sns.histplot(data=df, x="utc_timestamp")
+    plt.savefig("./Analysis_data/hist{}.png".format(name))
