@@ -36,6 +36,10 @@ def visualize(df):
 
 def hist(df, name):
     #ヒストグラムの確認
-    plt.figure(figsize=(12, 12))
-    sns.histplot(data=df, x="utc_timestamp")
-    plt.savefig("./Analysis_data/hist{}.png".format(name))
+    for i in range(1,len(df.columns)-1):
+        fig = plt.figure(figsize=(12, 12))
+        sns.lineplot(data=df, x="utc_timestamp", y=df.columns.values[i])
+        plt.grid(axis="y", linestyle="--")
+        fig.autofmt_xdate(rotation=90)
+        fig.tight_layout()
+        plt.savefig("./Analysis_data/line_{0}_{1}.png".format(name,i))
