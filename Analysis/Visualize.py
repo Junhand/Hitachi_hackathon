@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+import numpy as np
 
 def visualize(df):
     #分布の確認
@@ -38,8 +39,9 @@ def hist(df, name):
     #ヒストグラムの確認
     for i in range(1,len(df.columns)-1):
         fig = plt.figure(figsize=(12, 12))
-        sns.lineplot(data=df, x="utc_timestamp", y=df.columns.values[i])
+        sns.barplot(data=df, x="utc_timestamp", y=df.columns.values[i])
         plt.grid(axis="y", linestyle="--")
         fig.autofmt_xdate(rotation=90)
         fig.tight_layout()
-        plt.savefig("./Analysis_data/line_{0}_{1}.png".format(name,i))
+        plt.xticks(np.arange(0, df.shape[0], 4))
+        plt.savefig("./Analysis_data/hist_{0}_{1}.png".format(name,i))
