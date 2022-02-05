@@ -38,10 +38,10 @@ def visualize(df):
 def hist(df, name):
     #ヒストグラムの確認
     for i in range(1,len(df.columns)-1):
-        fig = plt.figure(figsize=(12, 12))
+        fig = plt.figure(figsize=(256, 12))
         sns.barplot(data=df, x="utc_timestamp", y=df.columns.values[i])
         plt.grid(axis="y", linestyle="--")
         fig.autofmt_xdate(rotation=90)
         fig.tight_layout()
-        plt.xticks(np.arange(0, df.shape[0], 4))
-        plt.savefig("./Analysis_data/hist_{0}_{1}.png".format(name,i))
+        plt.xticks(np.arange(0, df.shape[0], 4*6))
+        plt.savefig("./Analysis_data/hist_{0}_{1}.png".format(name,df.columns.values[i]))
